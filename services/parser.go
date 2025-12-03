@@ -5,6 +5,7 @@ import (
 	"github.com/gentmaks/task/models"
 	"gopkg.in/yaml.v2"
 	"log"
+	"strconv"
 )
 
 func ParseData(taskList []models.Task) []byte {
@@ -37,5 +38,18 @@ func GenerateID(taskList []models.Task) int {
 	return taskList[len(taskList) - 1].ID + 1 
 }
 
-
-
+func EditTask(args []string) {
+	if len(args) != 2 {
+		log.Fatalln("Usage: do <ID of task> <[Completed, In-Progress, Done]>")
+	}
+	taskList := ReadData()
+	index, err := strconv.Atoi(args[0])
+	if err != nil || index < 0 || index > len(taskList) {
+		log.Fatalln("Invalid Id detected")
+	}
+	if args[1] != "Completed" && args[1] != "In-Progress" && args[1] != "Done" {
+		log.Fatalln("Invalid state passed")
+	}
+	OverwriteFile()
+	WriteData(taskList)
+}
