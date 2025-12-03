@@ -40,14 +40,14 @@ func GenerateID(taskList []models.Task) int {
 
 func EditTask(args []string) {
 	if len(args) != 2 {
-		log.Fatalln("Usage: do <ID of task> <[Completed, In-Progress, Done]>")
+		log.Fatalln("Usage: do <ID of task> <[Completed, In-Progress, Open]>")
 	}
 	taskList := ReadData()
 	index, err := strconv.Atoi(args[0])
 	if err != nil || index < 0 || index > len(taskList) {
 		log.Fatalln("Invalid Id detected")
 	}
-	if args[1] != "Completed" && args[1] != "In-Progress" && args[1] != "Done" {
+	if args[1] != "Completed" && args[1] != "In-Progress" && args[1] != "Open" {
 		log.Fatalln("Invalid state passed")
 	}
 	OverwriteFile()
