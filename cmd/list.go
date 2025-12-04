@@ -4,6 +4,7 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"github.com/gentmaks/task/services"
 )
 
 // listCmd represents the list command
@@ -19,4 +20,6 @@ func init() {
 
 func list(cmd *cobra.Command, args []string) {
 	fmt.Println("list called")
+	taskList := services.ReadData()
+	services.PrintTasks(taskList)
 }

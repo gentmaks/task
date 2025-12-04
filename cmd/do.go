@@ -2,8 +2,8 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
+	"github.com/gentmaks/task/services"
 )
 
 // doCmd represents the do command
@@ -18,5 +18,5 @@ func init() {
 }
 
 func do(cmd *cobra.Command, args[]string) {
-	fmt.Println("do called")
+	services.EditTask(args)
 }

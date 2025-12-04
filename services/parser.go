@@ -51,6 +51,7 @@ func EditTask(args []string) {
 	if args[1] != "Completed" && args[1] != "In-Progress" && args[1] != "Open" {
 		log.Fatalln("Invalid state passed")
 	}
+	taskList[index-1].State = args[1]
 	OverwriteFile()
 	WriteData(taskList)
 }
