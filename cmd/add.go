@@ -27,7 +27,8 @@ func add(cmd *cobra.Command, args []string) {
 	}
 	var taskList []models.Task
 	for _, taskName := range(args) {
-		id := services.GenerateID(taskList)
+		fmt.Println(taskName)
+		var id = services.GenerateID()
 		task := models.Task{ID: id, Description: taskName, State: "Open"}
 		taskList = append(taskList, task)
 	}

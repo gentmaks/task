@@ -31,8 +31,9 @@ func ReadData() []models.Task {
 	return taskList
 }
 
-func GenerateID(taskList []models.Task) int {
-	if len(taskList) == 0 {
+func GenerateID() int {
+	taskList := ReadData()
+	if taskList == nil {
 		return 1
 	}
 	return taskList[len(taskList) - 1].ID + 1 
