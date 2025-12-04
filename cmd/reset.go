@@ -2,8 +2,8 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
+	"github.com/gentmaks/task/services"
 )
 
 // resetCmd represents the reset command
@@ -18,5 +18,5 @@ func init() {
 }
 
 func reset(cmd *cobra.Command, args []string) {
-	fmt.Println("reset called")	
+	services.OverwriteFile()	
 }

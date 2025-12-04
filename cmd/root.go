@@ -11,6 +11,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "task",
 	Short: "Go-based CLI tool to take care of your todo list",
+	Run: reset,
 }
 
 func Execute() {
